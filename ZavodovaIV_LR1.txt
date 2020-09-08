@@ -1,0 +1,29 @@
+1. Установка Git
+Скачала дистрибутив Git-клиента для Windows x64(https://git-scm.com/download/win) версии 2.28.0. Непосредственно установила Git.
+2. Первоначальная настройка Git
+Установила имя и электронную почту при помощи команд:
+$git config --global user.name "irrzzz"
+$git config --global user.email "irazavodova8589@gmail.com"
+Параметры установки окончаний строк - при помощи команд:
+$git config --global core.autocrlf true #для конвертации из CRLF в LF и обратно
+$git config --global core.safecrlf warn #для печати предупреждения при необратимом переходе
+Отображение Unicode - при помощи команды:
+$git config --global core.quotepath off
+Связала текстовый редактор(Sublime Text) с Git:
+$git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"
+2. Создание каталога проекта
+$mkdir lr1 #Создание пустого каталога
+3. Инициализация Git
+$cd lr1 #вход в каталог
+$git init #инициализация Git/создание репозитория
+Результат:
+Initialized empty Git repository in c:/Users/iraza/lr1/.git/
+4.Создание текстового файла отчета
+$touch ZavodovaIV_LR1.txt #создание текстового документа в каталоге
+$git add ZavodovaIV_LR1.txt #индексация
+$git commit -m "First Commit" #первый коммит
+Результат:
+ git commit -m "First commit"
+[master (root-commit) bbadd58] First commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 ZavodovaIV_LR1.txt
