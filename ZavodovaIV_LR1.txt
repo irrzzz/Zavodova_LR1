@@ -1,154 +1,237 @@
 1. Установка Git
-Скачала дистрибутив Git-клиента для Windows x64(https://git-scm.com/download/win) версии 2.28.0. Непосредственно установила Git.
+ Скачала дистрибутив Git-клиента для Windows x64(https://git-scm.com/download/win) версии 2.28.0. Непосредственно установила Git.
 2. Первоначальная настройка Git
-Установила имя и электронную почту при помощи команд:
-$git config --global user.name "irrzzz"
-$git config --global user.email "irazavodova8589@gmail.com"
-Параметры установки окончаний строк - при помощи команд:
-$git config --global core.autocrlf true #для конвертации из CRLF в LF и обратно
-$git config --global core.safecrlf warn #для печати предупреждения при необратимом переходе
-Отображение Unicode - при помощи команды:
-$git config --global core.quotepath off
-Связала текстовый редактор(Sublime Text) с Git:
-$git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"
-2. Создание каталога проекта
-$mkdir lr1 #Создание пустого каталога
-3. Инициализация Git
-$cd lr1 #вход в каталог
-$git init #инициализация Git/создание репозитория
-Результат:
-Initialized empty Git repository in c:/Users/iraza/lr1/.git/
-4.Создание текстового файла отчета
-$touch ZavodovaIV_LR1.txt #создание текстового документа в каталоге
-$git add ZavodovaIV_LR1.txt #индексация
-$git commit -m "First Commit" #первый коммит
-Результат:
-[master (root-commit) bbadd58] First commit
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 ZavodovaIV_LR1.txt
-5. Заполнение отчета и второй коммит
-Заполнила отчет до пятого пункта, проиндексировала изменения и сделала второй коммит:
-$git add ZavodovaIV_LR1.txt
-$git commit
-Открылось окно Sublime Text со следующим текстом:
+ Установила имя и электронную почту при помощи команд:
+  $ git config --global user.name "irrzzz"
+  $ git config --global user.email "irazavodova8589@gmail.com"
+ Параметры установки окончаний строк - при помощи команд:
+  $ git config --global core.autocrlf true #для конвертации из CRLF в LF и обратно
+  $ git config --global core.safecrlf warn #для печати предупреждения при необратимом переходе
+ Отображение Unicode - при помощи команды:
+  $ git config --global core.quotepath off
+ Связала текстовый редактор(Sublime Text) с Git:
+  $ git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"
+3. Создание каталога проекта
+  $ mkdir lr1 #Создание пустого каталога
+4. Инициализация Git
+  $ cd lr1 #вход в каталог
+  $ git init #инициализация Git/создание репозитория
+ Результат:
+  Initialized empty Git repository in c:/Users/iraza/lr1/.git/
+5. Создание текстового файла отчета
+  $ touch ZavodovaIV_LR1.txt #создание текстового документа в каталоге
+  $ git add ZavodovaIV_LR1.txt #индексация
+  $ git commit -m "First Commit" #первый коммит
+ Результат:
+  [master (root-commit) bbadd58] First commit
+   1 file changed, 0 insertions(+), 0 deletions(-)
+   create mode 100644 ZavodovaIV_LR1.txt
+6. Заполнение отчета и второй коммит
+ Заполнила отчет до пятого пункта, проиндексировала изменения и сделала второй коммит:
+  $ git add ZavodovaIV_LR1.txt
+  $ git commit
+ Открылось окно Sublime Text со следующим текстом:
 
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-# On branch mastercd
-# Changes to be committed:
-#   (use "git reset HEAD <file>..." to unstage)
-#
-#   modified:   ZavodovaIV_LR1.txt
-#
-В первую, пустую строку, вписала: "Second Commit". Сохранила изменения, закрыла окно.
-Результат:
-[master e806696] Second Commit
- 1 file changed, 29 insertions(+)
-6. Работа с файлами
-Игнорирование:
-Создала файл .gitignore
-$touch .gitignore
-В него вписала:
-*.css #игнорировать все css-файлы
-!stylesheet.css #кроме stylesheet.css
-Проиндексировала изменения:
-$git add .gitignore
-Сделала коммит:
-git commit -m "Adding .gitignore"
-Результат:
-[master bc95114] Adding .gitignore
- 1 file changed, 2 insertions(+)
- create mode 100644 .gitignore
-Создала файл style.css
-$touch style.css
-Попыталась проиндексировать:
-git add style.css
-Результат:
- The following paths are ignored by one of your .gitignore files:
- style.css
- hint: Use -f if you really want to add them.
- hint: Turn this message off by running
- hint: "git config advice.addIgnoredFile false"
-Создала файл stylesheet.css и проиндексировала его
- $touch stylesheet.css
- $git add stylesheet.css
- $git status
-Результат:
- On branch master
- Changes to be committed:
-   (use "git restore --staged <file>..." to unstage)
-         new file:   stylesheet.css
-Сделала коммит:
- $ git commit -m "Adding style.css and stylesheet.css"
-Результат:
- [master e421101] Adding style.css and stylesheet.css
-  1 file changed, 0 insertions(+), 0 deletions(-)
-  create mode 100644 stylesheet.css
-Сравнение:
-В файл stylesheet.css вписала:
- .st{
-	 font-color:red;
- }
- $ git diff
-Результат:
- diff --git a/stylesheet.css b/stylesheet.css
- index e69de29..da7e129 100644
- --- a/stylesheet.css
- +++ b/stylesheet.css
- @@ -0,0 +1,3 @@
- +.st{
- +       font-color:red;
- +}
- \ No newline at end of file
-Проиндексировала изменения и сделала коммит:
-$ git commit -m "First diff"
-Результат:
-[master 04e7632] First diff
- 1 file changed, 3 insertions(+)
-Сравнение двух коммитов:
-$ git diff bbadd58 bc95114 #первый коммит и коммит, сделаный после добавления .gitignore
-Результат:
-diff --git a/.gitignore b/.gitignore
-new file mode 100644
-index 0000000..b00a6ef
---- /dev/null
-+++ b/.gitignore
-@@ -0,0 +1,2 @@
-+*.css
-+!stylesheet.css
-\ No newline at end of file
-diff --git a/ZavodovaIV_LR1.txt b/ZavodovaIV_LR1.txt
-index e69de29..1c70100 100644
---- a/ZavodovaIV_LR1.txt
-+++ b/ZavodovaIV_LR1.txt
-@@ -0,0 +1,29 @@
-Удаление:
-$ git rm stylesheet.css
-Результат:
-rm 'stylesheet.css'
-Коммит:
-$ git commit -m "Removing stylesheet.css"
-Результат:
-[master 8a189b1] Removing stylesheet.css
- 1 file changed, 3 deletions(-)
- delete mode 100644 stylesheet.css
-Перемещение:
-Создала файл hello.html и папку html/, проиндексировала и сделала коммит:
-$ mkdir html
-$ touch hello.html
-$ git add html/
-$ git add hello.html
-git commit -m "Adding html/ and hello.html into lr1"
-Результат:
-[master f6af02e] Adding html/ and hello.html into lr1
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 html/hello.html
-Перенесла hello.html из lr1 в html:
-$ git mv hello.html html
-$ git status
-On branch master
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        renamed:    hello.html ->  html/hello.html
-$ git commit -m "Moving hello.html to html"
+  # Please enter the commit message for your changes. Lines starting
+  # with '#' will be ignored, and an empty message aborts the commit.
+  # On branch mastercd
+  # Changes to be committed:
+  #   (use "git reset HEAD <file>..." to unstage)
+  #
+  #   modified:   ZavodovaIV_LR1.txt
+  #
+ В первую, пустую строку, вписала: "Second Commit". Сохранила изменения, закрыла окно.
+ Результат:
+  [master e806696] Second Commit
+   1 file changed, 29 insertions(+)
+7. Работа с файлами
+ Игнорирование:
+  Создала файл .gitignore
+   $ touch .gitignore
+  В него вписала:
+   *.css #игнорировать все css-файлы
+   !stylesheet.css #кроме stylesheet.css
+  Проиндексировала изменения:
+   $ git add .gitignore
+  Сделала коммит:
+   $ git commit -m "Adding .gitignore"
+  Результат:
+   [master bc95114] Adding .gitignore
+    1 file changed, 2 insertions(+)
+    create mode 100644 .gitignore
+  Создала файл style.css
+   $ touch style.css
+  Попыталась проиндексировать:
+   $ git add style.css
+  Результат:
+    The following paths are ignored by one of your .gitignore files:
+    style.css
+    hint: Use -f if you really want to add them.
+    hint: Turn this message off by running
+    hint: "git config advice.addIgnoredFile false"
+  Создала файл stylesheet.css и проиндексировала его
+   $ touch stylesheet.css
+   $ git add stylesheet.css
+   $ git status
+  Результат:
+   On branch master
+   Changes to be committed:
+     (use "git restore --staged <file>..." to unstage)
+           new file:   stylesheet.css
+  Сделала коммит:
+   $ git commit -m "Adding style.css and stylesheet.css"
+  Результат:
+   [master e421101] Adding style.css and stylesheet.css
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 stylesheet.css
+ Сравнение:
+  В файл stylesheet.css вписала:
+   .st{
+ 	 font-color:red;
+   }
+   $ git diff
+  Результат:
+   diff --git a/stylesheet.css b/stylesheet.css
+   index e69de29..da7e129 100644
+   --- a/stylesheet.css
+   +++ b/stylesheet.css
+   @@ -0,0 +1,3 @@
+   +.st{
+   +       font-color:red;
+   +}
+   \ No newline at end of file
+  Проиндексировала изменения и сделала коммит:
+   $ git commit -m "First diff"
+  Результат:
+   [master 04e7632] First diff
+    1 file changed, 3 insertions(+)
+ Сравнение двух коммитов:
+  $ git diff bbadd58 bc95114 #первый коммит и коммит, сделаный после добавления .gitignore
+  Результат:
+   diff --git a/.gitignore b/.gitignore
+   new file mode 100644
+   index 0000000..b00a6ef
+   --- /dev/null
+   +++ b/.gitignore
+   @@ -0,0 +1,2 @@
+   +*.css
+   +!stylesheet.css
+   \ No newline at end of file
+   diff --git a/ZavodovaIV_LR1.txt b/ZavodovaIV_LR1.txt
+   index e69de29..1c70100 100644
+   --- a/ZavodovaIV_LR1.txt
+   +++ b/ZavodovaIV_LR1.txt
+   @@ -0,0 +1,29 @@
+ Удаление:
+   $ git rm stylesheet.css
+  Результат:
+   rm 'stylesheet.css'
+  Коммит:
+   $ git commit -m "Removing stylesheet.css"
+  Результат:
+   [master 8a189b1] Removing stylesheet.css
+    1 file changed, 3 deletions(-)
+    delete mode 100644 stylesheet.css
+ Перемещение:
+  Создала файл hello.html и папку html/, проиндексировала и сделала коммит:
+   $ mkdir html
+   $ touch hello.html
+   $ git add html/
+   $ git add hello.html
+   $ git commit -m "Adding html/ and hello.html into lr1"
+  Результат:
+   [master f6af02e] Adding html/ and hello.html into lr1
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 html/hello.html
+  Перенесла hello.html из lr1 в html:
+   $ git mv hello.html html
+   $ git status
+   On branch master
+   Changes to be committed:
+     (use "git restore --staged <file>..." to unstage)
+           renamed:    hello.html ->  html/hello.html
+   $ git commit -m "Moving hello.html to html"
+7. Работа с git log
+  $ git log
+  commit 20d451ec93eff754d524fa5a50af883c0ba70a7f (HEAD -> master)
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 23:52:32 2020 +0700
 
+      Moving hello.html to htmml/
+
+  commit f6af02e6178f35d88a1d08461925a6a4b21e0122
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 23:31:01 2020 +0700
+
+      Adding html/ and hello.html into lr1
+
+  commit 8a189b1eb2e42d8d32175154db6ec48616dfb1a9
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 23:21:57 2020 +0700
+
+      Removing stylesheet.css
+
+  commit 04e76324be8d8ad212a15c971d154c86bfae6c48
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 23:11:28 2020 +0700
+
+      First diff
+
+  commit e42110193904792b417803391ffdff85b4faed77
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 23:05:17 2020 +0700
+
+      Adding style.css and stylesheet.css
+
+  commit bc951145f59a66fb965dd184f576f7f48dec95db
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 22:52:54 2020 +0700
+
+      Adding .gitignore
+
+  commit e8066965acd9c401552fd9192b92e2be1e2c6e23
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 22:43:19 2020 +0700
+
+      Second Commit
+
+  commit bbadd58e5545659df528a7a5b43ab81f1b6828ae
+  Author: irrzzz <irazavodova8589@gmail.com>
+  Date:   Tue Sep 8 22:40:59 2020 +0700
+
+      First commit
+8. Работа с метками и отмена действий
+ Метки:
+  Создала метку для текущей версии проекта:
+   $ git tag -a v1.0 -m '1st version'
+
+   $ git tag
+   v1.0
+   $ git show v1.0
+   tag v1.0
+   Tagger: irrzzz <irazavodova8589@gmail.com>
+   Date:   Wed Sep 9 00:07:00 2020 +0700
+
+   1st version
+
+  Добавление метки для старой версии:
+   $ git tag -a v0.1 e421101 #коммит, в котором были добавлены style.css и stylesheet.css
+  В открывшемся окне Sublime Text вписала "old version"
+  Проверка:
+   $ git tag
+   v0.1 #метка для старой версии
+   v1.0 #метка для текущей версии
+  Удаление метки:
+   $ git tag -d v0.1
+   Deleted tag 'v0.1' (was dbe30c8)
+  Легковесная метка:
+   $ git tag v1.0-lw
+
+   $ git tag
+   v1.0
+   v1.0-lw
+ Отмена изменений:
+Создала файл stylesheet.css
+$ touch stylesheet.css
+Проиндексировала его
+$ git add stylesheet.css
