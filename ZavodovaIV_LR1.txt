@@ -226,65 +226,79 @@
    Deleted tag 'v0.1' (was dbe30c8)
   Легковесная метка:
    $ git tag v1.0-lw
-
+  Проверка:
    $ git tag
    v1.0
    v1.0-lw
  Отмена изменений:
-Создала файл stylesheet.css
-$ touch stylesheet.css
-Проиндексировала его
-$ git add stylesheet.css
+  Создала файл stylesheet.css
+   $ touch stylesheet.css
+  Проиндексировала его
+   $ git add stylesheet.css
+  Проверка:
+   $ git status
+   On branch master
+   Changes to be committed:
+     (use "git restore --staged <file>..." to unstage)
+           new file:   stylesheet.css
+  Отмена изменений:
+   $ git restore --staged stylesheet.css
+  Проверка:
+   $ git status
+   On branch master
+   Untracked files:
+     (use "git add <file>..." to include in what will be committed)
+           stylesheet.css
 
-$ git status
-On branch master
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-        new file:   stylesheet.css
-
-$ git restore --staged stylesheet.css
-
-$ git status
-On branch master
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        stylesheet.css
-
-no changes added to commit (use "git add" and/or "git commit -a")
-
-$ git add ZavodovaIV_LR1.txt
-
-$ git commit -m "Unstage"
-[master b0bcac6] Unstage
- 1 file changed, 237 insertions(+), 154 deletions(-)
- rewrite ZavodovaIV_LR1.txt (98%)
+   no changes added to commit (use "git add" and/or "git commit -a")
+  Коммит:
+   $ git commit -m "Unstage"
+   [master b0bcac6] Unstage
+    1 file changed, 237 insertions(+), 154 deletions(-)
+    rewrite ZavodovaIV_LR1.txt (98%)
 
 9. Ветки
-$ git checkout -b style
-Switched to a new branch 'style'
+ Создала новую ветку style:
+  $ git checkout -b style
+  Switched to a new branch 'style'
+ Добавила файл stylesheet.css, в него вписала:
+.h1{
+     font-color: red;
+  }
+ Проиндексировала изменения:
+  $ git add stylesheet.css
+ Создала папку branch1:
+  $ mkdir branch1
+ Перенесла в нее следующие файлы:
+  $ git mv stylesheet.css branch1
+  $ git mv html/hello.html branch1
+ Коммит:
+  $ git commit -m "First branch"
+  [style eeab48d] First branch
+   3 files changed, 11 insertions(+)
+   create mode 100644 branch1/hello.html
+   create mode 100644 branch1/stylesheet.css
+   delete mode 100644 html/hello.html
 
-$ git add stylesheet.css
+ Переместилась в ветку master
+  $ git checkout master
+  Switched to branch 'master'
+ Слияние:
+  $ git merge style
+  Updating b0bcac6..36b00b7
+  Fast-forward
+   branch1/hello.html     | 8 ++++++++
+   branch1/stylesheet.css | 3 +++
+   html/hello.html        | 0
+   3 files changed, 11 insertions(+)
+   create mode 100644 branch1/hello.html
+   create mode 100644 branch1/stylesheet.css
+   delete mode 100644 html/hello.html
+ Удаление ветки style:
+$ git branch -d style
+Deleted branch style (was 36b00b7).
 
-$ mkdir branch1
+$ git commit -m "Merger and deleting style"
+[master cb6bf13] Merger and deleting style
+ 1 file changed, 53 insertions(+)
 
-$ git mv styleshit.css branch1
-fatal: bad source, source=styleshit.css, destination=branch1/styleshit.css
-
-$ git mv stylesheet.css branch1
-
-$ git mv html/hello.html branch1
-
-$ git add branch1/hello.html
-
-$ git commit -m "First branch"
-[style eeab48d] First branch
- 3 files changed, 11 insertions(+)
- create mode 100644 branch1/hello.html
- create mode 100644 branch1/stylesheet.css
- delete mode 100644 html/hello.html
-
-
-
-
-$ git checkout master
-Switched to branch 'master'
